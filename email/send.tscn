@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://k5ujjyy1qx3q"]
+
+[ext_resource type="Script" path="res://email/send.gd" id="1_0ktjv"]
+
+[node name="ColorRect" type="ColorRect"]
+offset_left = 256.0
+offset_top = 81.0
+offset_right = 969.0
+offset_bottom = 525.0
+color = Color(0.811765, 0.811765, 0.811765, 1)
+script = ExtResource("1_0ktjv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -349.0
+offset_top = 3.0
+offset_right = 349.0
+offset_bottom = 43.0
+grow_horizontal = 2
+
+[node name="ToLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "To:"
+
+[node name="ToLineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+text = "support@rdworlds.com                                                                                                       "
+editable = false
+expand_to_text_length = true
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Send"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 90.0
+offset_right = 708.0
+offset_bottom = 439.0
+text = "Hello!
+
+I faced with crash at the begginig when clicking New button.
+Could you please help me
+
+~~~"
+editable = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 46.0
+offset_right = 350.0
+offset_bottom = 86.0
+grow_horizontal = 2
+
+[node name="TopicLabel" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Topic:"
+
+[node name="TopicLineEdit" type="LineEdit" parent="HBoxContainer2"]
+layout_mode = 2
+text = "AceZero v0.9.9.A crash on startup                                                                                            "
+editable = false
+expand_to_text_length = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

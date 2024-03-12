@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://dufknupeioevq"]
+
+[ext_resource type="Script" path="res://dbgai/app.gd" id="1_2ql25"]
+[ext_resource type="Texture2D" uid="uid://d3iycv5dg8327" path="res://X.png" id="2_lkj2e"]
+[ext_resource type="Texture2D" uid="uid://boucklmp4yawr" path="res://dbgai/icon.png" id="3_f47xd"]
+[ext_resource type="Texture2D" uid="uid://pvd6rsywijyv" path="res://dbgai/run.png" id="4_4kph6"]
+[ext_resource type="FontFile" uid="uid://de188awwle1gk" path="res://fonts/Noto_Sans_Mono/static/NotoSansMono-SemiBold.ttf" id="5_vvmoe"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -319.0
+offset_right = 569.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.811765, 0.811765, 0.811765, 1)
+script = ExtResource("1_2ql25")
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_lkj2e")
+
+[node name="CodeEdit" type="CodeEdit" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 86.0
+offset_right = 637.0
+offset_bottom = 392.0
+theme_override_fonts/font = ExtResource("5_vvmoe")
+minimap_draw = true
+caret_blink = true
+gutters_draw_line_numbers = true
+
+[node name="AiText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 46.0
+offset_right = 1125.0
+offset_bottom = 412.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Cheers~
+It's me, your Ai assistant.
+I don't see any crashes in a last usage history.
+Come back when something crashes!"
+
+[node name="TopLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 38.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "dbgAI for x68 CPU"
+
+[node name="AppIcon" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("3_f47xd")
+
+[node name="RunButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 46.0
+offset_right = 634.0
+offset_bottom = 78.0
+texture_normal = ExtResource("4_4kph6")
+
+[node name="MemoryTextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 430.0
+offset_right = 1130.0
+offset_bottom = 558.0
+theme_override_fonts/font = ExtResource("5_vvmoe")
+editable = false
+minimap_draw = true
+minimap_width = 32
+
+[node name="MemoryLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = 402.0
+offset_right = 136.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Memory viewer"
+
+[node name="AiLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 759.0
+offset_top = 20.0
+offset_right = 848.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "AI assistant"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="RunButton" to="." method="_on_texture_button_pressed"]

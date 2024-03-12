@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfu4hqij30ga5"]
+
+[ext_resource type="Script" path="res://ending/ending.gd" id="1_j8ojh"]
+
+[node name="ColorRect" type="ColorRect"]
+offset_right = 1154.0
+offset_bottom = 650.0
+color = Color(0.109804, 0.109804, 0.109804, 1)
+script = ExtResource("1_j8ojh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -96.0
+offset_right = 159.5
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ask" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Ask for help"
+
+[node name="Badass" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Badass developer"
+
+[node name="CanPlay" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Can play other game"
+
+[node name="Deep" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Deep dark secrets"
+
+[node name="EndingLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_right = 76.5
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 43
+text = "Ending:"
+horizontal_alignment = 1
+
+[node name="AColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 228.0
+offset_right = 701.0
+offset_bottom = 274.0
+color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="BColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 275.0
+offset_right = 701.0
+offset_bottom = 322.0
+color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="CColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 327.0
+offset_right = 739.0
+offset_bottom = 371.0
+color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="DColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 378.0
+offset_right = 703.0
+offset_bottom = 421.0
+color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 1082.0
+offset_top = 606.0
+offset_right = 1134.0
+offset_bottom = 629.0
+text = "[Close]"
+
+[connection signal="pressed" from="LinkButton" to="." method="_on_link_button_pressed"]

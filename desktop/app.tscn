@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbn5timse3et2"]
+
+[ext_resource type="Texture2D" uid="uid://clfw4wee0n5p2" path="res://desktop/MainBGV2.png" id="1_ptpj0"]
+[ext_resource type="Script" path="res://desktop/app.gd" id="2_00po1"]
+[ext_resource type="Texture2D" uid="uid://imwhnvdmujm5" path="res://desktop/start.png" id="2_0r4gj"]
+[ext_resource type="Texture2D" uid="uid://ehqt1fhkugkw" path="res://desktop/gameico.png" id="4_6g0g1"]
+
+[node name="MainBgv2" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ptpj0")
+script = ExtResource("2_00po1")
+
+[node name="BottomMenu" type="ColorRect" parent="."]
+offset_left = -288.0
+offset_top = 140.0
+offset_right = 288.0
+offset_bottom = 163.0
+color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[node name="StartButton" type="TextureButton" parent="BottomMenu"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 22.0
+offset_bottom = 22.0
+texture_normal = ExtResource("2_0r4gj")
+stretch_mode = 4
+
+[node name="SecondTimer" type="Timer" parent="BottomMenu"]
+wait_time = 0.5
+autostart = true
+
+[node name="TimeLabel" type="Label" parent="BottomMenu"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "12:00:00"
+
+[node name="gameexe" type="TextureButton" parent="."]
+offset_left = -55.5
+offset_top = -26.5
+offset_right = -23.5
+offset_bottom = 19.5
+texture_normal = ExtResource("4_6g0g1")
+stretch_mode = 4
+
+[node name="gameexeLabel" type="Label" parent="gameexe"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Ace0.exe"
+
+[connection signal="pressed" from="BottomMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="BottomMenu/SecondTimer" to="." method="_on_second_timer_timeout"]
+[connection signal="pressed" from="gameexe" to="." method="_on_gameexe_pressed"]

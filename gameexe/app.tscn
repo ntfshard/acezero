@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://dam1ux1ocss0n"]
+
+[ext_resource type="Script" path="res://gameexe/app.gd" id="1_lnilh"]
+[ext_resource type="Texture2D" uid="uid://cri7pkx4fnjln" path="res://gameexe/MainBGV2.png" id="2_d8r55"]
+[ext_resource type="Texture2D" uid="uid://dr81pi3451spg" path="res://gameexe/button_new.png" id="3_0tlua"]
+[ext_resource type="Texture2D" uid="uid://dftvu1p0l8y1q" path="res://gameexe/button_base.png" id="4_fmjgl"]
+[ext_resource type="Texture2D" uid="uid://bdepr4hlihcir" path="res://gameexe/button_load.png" id="5_t5xnx"]
+[ext_resource type="Texture2D" uid="uid://ou1jmltvqhci" path="res://gameexe/button_exit.png" id="6_57fry"]
+[ext_resource type="Texture2D" uid="uid://buvnl0iir5ssh" path="res://gameexe/button_base_disabled.png" id="6_qcdd1"]
+[ext_resource type="Texture2D" uid="uid://bojpdk54qsma8" path="res://gameexe/button_about.png" id="7_i1g4i"]
+[ext_resource type="Texture2D" uid="uid://cuf26u4cbhfv8" path="res://gameexe/logo.png" id="8_gaa4x"]
+
+[node name="GameExe" type="Node2D"]
+script = ExtResource("1_lnilh")
+
+[node name="MainBgv2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("2_d8r55")
+
+[node name="NewButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 150.0
+offset_top = 210.0
+offset_right = 254.0
+offset_bottom = 258.0
+texture_normal = ExtResource("3_0tlua")
+texture_pressed = ExtResource("4_fmjgl")
+stretch_mode = 5
+
+[node name="LoadButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 150.0
+offset_top = 310.0
+offset_right = 254.0
+offset_bottom = 358.0
+texture_normal = ExtResource("5_t5xnx")
+texture_pressed = ExtResource("6_qcdd1")
+stretch_mode = 5
+
+[node name="ExitButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 150.0
+offset_top = 410.0
+offset_right = 254.0
+offset_bottom = 458.0
+texture_normal = ExtResource("6_57fry")
+texture_pressed = ExtResource("4_fmjgl")
+stretch_mode = 5
+
+[node name="AboutButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 1035.0
+offset_top = 583.0
+offset_right = 1139.0
+offset_bottom = 631.0
+texture_normal = ExtResource("7_i1g4i")
+texture_pressed = ExtResource("4_fmjgl")
+stretch_mode = 5
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(306, 108)
+texture = ExtResource("8_gaa4x")
+
+[connection signal="pressed" from="NewButton" to="." method="_on_new_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="AboutButton" to="." method="_on_about_button_pressed"]

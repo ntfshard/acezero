@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://m5ng75k6je7h"]
+
+[ext_resource type="Script" path="res://browser/app.gd" id="1_a5hej"]
+[ext_resource type="Texture2D" uid="uid://d3iycv5dg8327" path="res://X.png" id="2_wdftw"]
+[ext_resource type="Texture2D" uid="uid://cej672ravm3jp" path="res://browser/arrow.png" id="3_6rsxx"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -526.0
+offset_top = -297.0
+offset_right = 538.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.811765, 0.811765, 0.811765, 1)
+script = ExtResource("1_a5hej")
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_wdftw")
+
+[node name="UrlLineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 998.0
+offset_bottom = 31.0
+placeholder_text = "Enter url or search request here"
+clear_button_enabled = true
+
+[node name="GoButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 999.0
+offset_right = 1031.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_6rsxx")
+
+[node name="BodyRichText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 34.0
+offset_right = 1060.0
+offset_bottom = 545.0
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+selection_enabled = true
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="text_submitted" from="UrlLineEdit" to="." method="_on_url_line_edit_text_submitted"]
+[connection signal="pressed" from="GoButton" to="." method="_on_go_button_pressed"]

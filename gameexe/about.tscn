@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cayrqwj6k06bs"]
+
+[ext_resource type="Script" path="res://gameexe/about.gd" id="1_5ojak"]
+[ext_resource type="Texture2D" uid="uid://cdppeepm0rra1" path="res://gameexe/about.png" id="1_31u1e"]
+[ext_resource type="Texture2D" uid="uid://bkba3igj6v2xp" path="res://gameexe/X.png" id="3_kr5h2"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5ojak")
+
+[node name="About" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 319)
+texture = ExtResource("1_31u1e")
+
+[node name="ExitButton" type="TextureButton" parent="About"]
+texture_filter = 1
+offset_left = 268.0
+offset_top = -132.0
+offset_right = 300.0
+offset_bottom = -100.0
+texture_normal = ExtResource("3_kr5h2")
+
+[node name="ContactUsButton" type="TextureButton" parent="About"]
+offset_left = 48.0
+offset_top = 92.0
+offset_right = 259.0
+offset_bottom = 132.0
+
+[connection signal="pressed" from="About/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="About/ContactUsButton" to="." method="_on_contact_us_button_pressed"]

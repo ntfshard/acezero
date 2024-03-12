@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://cled7g7xyigj2"]
+
+[ext_resource type="Script" path="res://desktop/startMenu.gd" id="1_a1svx"]
+[ext_resource type="Texture2D" uid="uid://dcypkjgf1fqg" path="res://minesweeper/mine_red.png" id="1_uhilv"]
+[ext_resource type="Texture2D" uid="uid://boucklmp4yawr" path="res://dbgai/icon.png" id="3_re42i"]
+[ext_resource type="Texture2D" uid="uid://qbi8flcap60b" path="res://email/icon.png" id="4_frftm"]
+[ext_resource type="Texture2D" uid="uid://b102cy41li86" path="res://browser/icon.png" id="5_gtqtc"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -285.0
+offset_right = 159.0
+offset_bottom = -22.0
+grow_vertical = 0
+color = Color(0.137255, 0.137255, 0.137255, 1)
+script = ExtResource("1_a1svx")
+
+[node name="RecentLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 52.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.937255, 0.937255, 0.937255, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Recent"
+
+[node name="mineSweeperButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 25.0
+offset_top = 33.0
+offset_right = 57.0
+offset_bottom = 78.0
+texture_normal = ExtResource("1_uhilv")
+
+[node name="MineSweeperLabel" type="Label" parent="mineSweeperButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -13.0
+offset_right = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 9
+text = "Minesweeper"
+horizontal_alignment = 1
+
+[node name="dbgaiButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 97.0
+offset_top = 32.0
+offset_right = 129.0
+offset_bottom = 77.0
+texture_normal = ExtResource("3_re42i")
+stretch_mode = 4
+
+[node name="dbgaiLabel" type="Label" parent="dbgaiButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -13.0
+offset_right = 12.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 9
+text = "dbgAI"
+
+[node name="emailButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 101.0
+offset_right = 56.0
+offset_bottom = 146.0
+texture_normal = ExtResource("4_frftm")
+stretch_mode = 4
+
+[node name="emailLabel" type="Label" parent="emailButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 9
+text = "Mail"
+horizontal_alignment = 1
+
+[node name="browserButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 96.0
+offset_top = 100.0
+offset_right = 128.0
+offset_bottom = 145.0
+texture_normal = ExtResource("5_gtqtc")
+stretch_mode = 4
+
+[node name="browserLabel" type="Label" parent="browserButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 9
+text = "Browser"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="mineSweeperButton" to="." method="_on_mine_sweeper_button_pressed"]
+[connection signal="pressed" from="dbgaiButton" to="." method="_on_dbgai_button_pressed"]
+[connection signal="pressed" from="emailButton" to="." method="_on_email_button_pressed"]
+[connection signal="pressed" from="browserButton" to="." method="_on_browser_button_pressed"]

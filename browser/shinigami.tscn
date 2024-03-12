@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://beokfo4rq8u7m"]
+
+[ext_resource type="Texture2D" uid="uid://d3iycv5dg8327" path="res://X.png" id="1_cwyj4"]
+[ext_resource type="Script" path="res://browser/shinigami.gd" id="1_smjlk"]
+[ext_resource type="Texture2D" uid="uid://b7vvpg0443mgw" path="res://browser/arrow_disabled.png" id="3_52w5k"]
+[ext_resource type="Texture2D" uid="uid://8rgvcb3h45fj" path="res://browser/shinigami.png" id="4_dr0fa"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -526.0
+offset_top = -297.0
+offset_right = 538.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.811765, 0.811765, 0.811765, 1)
+script = ExtResource("1_smjlk")
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture_normal = ExtResource("1_cwyj4")
+
+[node name="UrlLineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 998.0
+offset_bottom = 31.0
+text = "www.42-42-564.jp"
+placeholder_text = "Enter url or search request here"
+editable = false
+clear_button_enabled = true
+
+[node name="GoButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 999.0
+offset_right = 1031.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_52w5k")
+
+[node name="Shinigami" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(531.536, 292.5)
+scale = Vector2(3.69072, 3.20625)
+texture = ExtResource("4_dr0fa")
+
+[node name="LoginLineEdit" type="LineEdit" parent="Shinigami"]
+offset_left = -116.0
+offset_top = 4.0
+offset_right = -20.0
+offset_bottom = 26.0
+focus_next = NodePath("../PassLineEdit")
+theme_override_font_sizes/font_size = 10
+placeholder_text = "Login"
+
+[node name="PassLineEdit" type="LineEdit" parent="Shinigami"]
+offset_left = -116.383
+offset_top = 26.6667
+offset_right = -20.3827
+offset_bottom = 48.6667
+focus_next = NodePath("../LoginLineEdit")
+theme_override_font_sizes/font_size = 10
+placeholder_text = "Password"
+secret = true
+secret_character = "*"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="text_submitted" from="Shinigami/LoginLineEdit" to="." method="_on_login_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Shinigami/PassLineEdit" to="." method="_on_pass_line_edit_text_submitted"]

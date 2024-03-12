@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckb1x7mvbyuig"]
+
+[ext_resource type="Texture2D" uid="uid://tlqg1emc3hgo" path="res://minesweeper/smile.png" id="1_evoen"]
+[ext_resource type="Script" path="res://minesweeper/app.gd" id="1_qikwy"]
+[ext_resource type="Texture2D" uid="uid://d3iycv5dg8327" path="res://X.png" id="2_axwcy"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -200.0
+offset_right = 165.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+color = Color(0.811765, 0.811765, 0.811765, 1)
+script = ExtResource("1_qikwy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("2_axwcy")
+
+[node name="TopHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="CounterLabel" type="Label" parent="VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "10"
+
+[node name="ResetButton" type="TextureButton" parent="VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_evoen")
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "0"
+
+[node name="OneSecondTimer" type="Timer" parent="VBoxContainer/TopHBoxContainer"]
+
+[node name="Field" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+columns = 9
+
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopHBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="timeout" from="VBoxContainer/TopHBoxContainer/OneSecondTimer" to="." method="_on_one_second_timer_timeout"]
