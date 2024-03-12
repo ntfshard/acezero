@@ -95,32 +95,34 @@ The graph of a quadratic function y=ax^2+bx+c is a parabola if a!=0, and, conver
 	
 	## add assembly-related help here for dbg quest
 	"x68": """X68 CPU overview
-It's a general purpose series CPU with 4 registers and various
-assembly commands like mov, add, sub, mul, inc, dec, xor, or, and, nop...
+It's a general purpose series CPU with 4 registers and
+various assembly commands like mov, add, sub, mul, inc, dec, xor, or, and, nop...
 It has a Harward memory model with flat addresses.
 Each memory address can be protected to access by using 3 different access flags: no_access, read_only, read_write""",
-	"mov": """mov ax, 2\tmove to ax register value 2
-mov dx, bx\tmove to dx register value in bx
-mov [ax], dx\tmove to memory by address stored in ax value in dx register
-mov cx, [ax + bx]\tmove to register cx value from memory by address of sum ax and bx registers
-mov dx, [cx+1]\tmove to register dx value from memory by address of sum cx and 1
+	"memory": """Memory store same type of data which are stored in registers. Each cell has their own address. Cells goes one by one""",
+	"mov": """mov ax, 2\t\t\tassign to ax register value 2
+mov dx, bx\t\t\t\tassign to dx register value from bx
+mov [ax], dx\t\t\t\tassign to memory by address stored in ax value from dx register
+mov cx, [ax + bx]\t\tassign to register cx value from memory by address of sum ax and bx registers
+mov dx, [cx+1]\t\t\tassign to register dx value from memory by address of sum cx and 1
 
+Even if command called mov, it's actually making copy of 2nd operand to the first one. 2nd operant leaves intact
 Same argument format can be used for other assembly instructions of x68 CPU""",
 	"add": """Add 2 value, store result in first argument
-add ax, 2\tadds 2 to value in register ax
-add cx, bx\tadds to value in cx value in bx""",
+add ax, 2\t\t\tadds 2 to value in register ax, equal to ax = ax + 2
+add cx, bx\t\t\tadds to value in cx value in bx, equal to cx = cx + bx""",
 	"sub": """Substitute 2 value, store result in first argument
-sub dx, 3\tdx = dx - 3
-sub dx, cx\tdx = dx - cx""",
+sub dx, 3\t\t\tequal to dx = dx - 3
+sub dx, cx\t\t\tequal to dx = dx - cx""",
 	"inc": """Increment value in first argument by 1
-inc [ax]\tincrement value in memory by address stored in ax by one, equivalent to add [ax], 1
-inc cx\tcx = cx + 1""",
+inc [ax]\t\t\tincrement value in memory by address stored in ax by one, equivalent to add [ax], 1
+inc cx\t\t\t\tequal to cx = cx + 1""",
 	"dec": """Decrease value in first argument by 1
-dec [dx]\tdecrement value in memory by address stored in dx by one, equivalent to sub [dx], 1
-dec bx\tbx = bx - 1""",
+dec [dx]\t\t\tdecrement value in memory by address stored in dx by one, equivalent to sub [dx], 1
+dec bx\t\t\tequal to bx = bx - 1""",
 	"mul": """Multiplcate 2 value, store result in first argument
-mul ax, bx\tax = ax * bx
-mul dx, 16\tdx = dx * 16""",
+mul ax, bx\t\t\tequal to ax = ax * bx
+mul dx, 16\t\t\tequal to dx = dx * 16""",
 	"xor": """Bitwise XOR operation, aslo called exclusive or. Using 2 same arguments is a well-known trick by writing zero\nVery often used as a simple symmetric key encryption
 x|y|xor
 0|0|0

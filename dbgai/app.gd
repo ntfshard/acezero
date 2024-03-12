@@ -45,7 +45,7 @@ class memoryAccessIndirectOneArg:
 	func write(value) -> Array:
 		var addr = srcA.read().back()
 		if !cpu.memoryAccess.has(addr) || cpu.memoryAccess[addr] != Access.rw:
-			return [false, 'Attempt to write to a RO address %s: %x' % [srcA.dst(), addr]]
+			return [false, 'Attempt to write to a ReadOnly address %s: %x' % [srcA.dst(), addr]]
 		# technically we could check existance of addr also here...
 		cpu.memory[addr] = value
 		return [true, '']
@@ -71,7 +71,7 @@ class memoryAccessIndirectTwoArgs:
 	func write(value) -> Array:
 		var addr = srcA.read().back() + srcB.read().back()
 		if !cpu.memoryAccess.has(addr) || cpu.memoryAccess[addr] != Access.rw:
-			return [false, 'Attempt to write to a RO address %x by %s+%s' % [addr, srcA.dst(), srcB.dst()] ]
+			return [false, 'Attempt to write to a ReadOnly address %x by %s+%s' % [addr, srcA.dst(), srcB.dst()] ]
 		cpu.memory[addr] = value
 		return [true, '']
 	func read() -> Array:
@@ -313,7 +313,7 @@ func initMemoryViewer():
 		'''I'm hidding my messages in some regions of memory, hope someone can find it.''',
 		'''Broken build of AceZero game was uploaded to servers by purpose''',
 		'''I guess they find it and replace it with working version quite fast''',
-		'''Hope you can find a more details in encrypted file which I hided in my account on gi''',
+		'''Hope you can find a more details in encrypted file which I hided in my account on gith''',
 		'''can't write password directly it can be detected by firewalls''',
 		'''[a-z]nickname can be used to decode it even with this funny CPU''',
 		'''Good luck than, be careful, they are watching and don't dare to go hollow'''
@@ -401,14 +401,13 @@ class DeterminantFunc:
 Matrix is a square array of table of numbers:
 	| A B |
 	| C D |
-In memory they are located row by row. Element A has a base_address passed to function, B has a base_address+1 address...
+In memory they are located row by row. Element A has a base_address which passed to function in register, B has a base_address+1 address...
 To calculate determinant for 2x2 matrix we can use formula: A*D-B*C
 Input:
 	base_address of matrix in ax
 Output:
 	address to store result in dx
-FYI, to acces value in memory you should use `[` `]` around expression, like: [dx] or [ax+2]
-"""
+FYI, to acces value in memory you should use `[` `]` around expression, like: [ax] for A element or [ax+2] for C element"""
 	# return: [true/false, 'message' if false]
 	func run(codeEdit: CodeEdit) -> Array:
 		var executor = Executor.new()
@@ -492,7 +491,7 @@ func _ready():
 	initMemoryViewer()
 	if Global.CrashSeen:
 		for i in range(0, Global.DbgLastCode.size()):
-			$CodeEdit.set_line(i, Global.DbgLastCode[i])
+			$CodeEdit.insert_line_at(i, Global.DbgLastCode[i])
 		$TopLabel.text = "dbgAI - Ace0.exe (x68 CPU)"
 		$AiText.text = '''Hi!
 I noted you faced an application crash! That's good! I started debugging sessinon for you to fix it!\n''' + quests[Global.DbgCurrentProblemIdx].description()
@@ -508,6 +507,7 @@ func _on_texture_button_pressed():
 		var res = quests[Global.DbgCurrentProblemIdx].run($CodeEdit)
 		print(res)
 		if res.front():
+			$CodeEdit.clear()
 			Global.DbgCurrentProblemIdx += 1
 			if Global.DbgCurrentProblemIdx == quests.size():
 				Global.DbgCurrentProblemIdx = 0
